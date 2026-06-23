@@ -1,0 +1,12 @@
+
+/.vscode/
+/.git/
+/.vs/
+
+# Legacy / deprecated code — exclude from graph
+**/[Ll]egacy/
+**/[Dd]eprecated/
+**/Old*/
+**/Archive*/
+
+*.pid

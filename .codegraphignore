@@ -1,0 +1,15 @@
+/docs/
+/.vscode/
+/.git/
+/.vs/
+/.claude/
+/.codex/
+/.trae/
+/.obsidian/
+/raw/
+/schema/
+!/obsidian/*.md
+/obsidian/.obsidian/
+/.codegraph/
+/docs/
+/archive/
