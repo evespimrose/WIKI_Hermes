@@ -37,7 +37,7 @@
 ### ✅ 이미 있는 것 (obsidian 보유)
 
 **토큰 통제·탐색 기반:**
-- [[Cave_Man_Protocol]] — 무차별 탐색 금지, BLK 좌표 접근 강제
+- [[Sonar_Protocol]] — 무차별 탐색 금지, BLK 좌표 접근 강제
 - [[BLK_좌표_시스템]] / [[Dictionary_md_좌표_시스템]] — 기능명세 공간 매핑
 - [[Codegraph_MCP_통합]] — Codegraph grep 기반 코드 접근
 - [[L1_Hard_Gate_훅체계]] — 결정론적 훅 강제 구조
