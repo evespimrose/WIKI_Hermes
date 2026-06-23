@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM 컨텍스트 5대 문제</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <style>
+        :root {
+            --bg-color: #E4E4FF;
+            --sidebar-bg: #1A1A2E;
+            --primary-color: #6260FF;
+            --text-color: #2D2D45;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 10px 40px rgba(98, 96, 255, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar */
+        nav {
+            width: 320px;
+            background-color: var(--sidebar-bg);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            padding: 40px 20px;
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            padding-left: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            margin-bottom: 10px;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            padding: 12px 15px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            color: white;
+            background-color: rgba(98, 96, 255, 0.2);
+            padding-left: 25px;
+        }
+
+        nav a.active {
+            background-color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 320px;
+            padding: 60px 80px;
+            width: calc(100% - 320px);
+            max-width: 1400px;
+        }
+
+        header {
+            margin-bottom: 60px;
+        }
+
+        header h2 {
+            font-size: 2.5rem;
+            color: var(--sidebar-bg);
+            margin-bottom: 10px;
+        }
+
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Section Cards */
+        section {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+            scroll-margin-top: 60px;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(98, 96, 255, 0.25);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h3::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 32px;
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            margin: 30px 0 15px;
+            color: var(--sidebar-bg);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+            line-height: 1.6;
+        }
+
+        li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .highlight-text {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>문제 정의</h1>
+        <ul>
+            <li><a href="#sec1" class="active">0. 개요</a></li>
+            <li><a href="#sec2">1. 컴팩션 절벽</a></li>
+            <li><a href="#sec3">2. 환각 누적</a></li>
+            <li><a href="#sec4">3. 토큰 비용 폭발</a></li>
+            <li><a href="#sec5">4. 세션 단절</a></li>
+            <li><a href="#sec6">5. 에이전트 디스패치 혼란</a></li>
+            <li><a href="#sec7">6. 통찰</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header>
+            <div class="meta">
+                <span class="tag">LLM-Wiki</span>
+                <span class="tag">문제정의</span>
+                <span class="tag">2026-05-22</span>
+            </div>
+            <h2>LLM 컨텍스트 5대 문제</h2>
+        </header>
+
+        <section id="sec1">
+            <h3>0. 개요</h3>
+            <p>장기 LLM 운용에서 반복적으로 관찰되는 다섯 가지 본질적 문제. 모든 설계 결정은 이 다섯 문제 중 하나 이상을 직접 겨냥한다.</p>
+        </section>
+
+        <section id="sec2">
+            <h3>1. 컴팩션 절벽 (Compaction Cliff)</h3>
+            <p>장기 세션에서 컨텍스트가 한계에 도달하면 `/compact` 또는 자동 압축이 실행된다. 이때 현재 진행 단계, 사용자가 강조한 규칙, 진행 중 RIPER 모드, 직전 결정의 근거가 모두 소실된다. AI는 이전 컨텍스트가 무엇이었는지 모르는 채 작업을 이어가며, 사용자는 매번 처음부터 다시 설명한다.</p>
+            <h4>대응 전략</h4>
+            <ul>
+                <li>컴팩션 생존 전략의 L2·L3 계층</li>
+                <li>4계층 메모리 아키텍처</li>
+            </ul>
+        </section>
+
+        <section id="sec3">
+            <h3>2. 환각 누적 (Hallucination Accumulation)</h3>
+            <p>세션이 길어질수록 LLM은 다음과 같이 드리프트한다.</p>
+            <ul>
+                <li>명시된 규칙을 "기억한다"고 주장하지만 실제로는 우회</li>
+                <li>사용자 의도와 다른 방향으로 작업 확장</li>
+                <li>존재하지 않는 파일·함수·API 호출</li>
+                <li>권한 없는 코드 변경</li>
+            </ul>
+            <p>LLM의 "Lost in the Middle" 현상과 결합해 컨텍스트 중반 정보가 소실되면 환각은 기하급수적으로 증가한다.</p>
+            <h4>대응 전략</h4>
+            <ul>
+                <li>"Hooks > Prompts" 원칙</li>
+                <li>"Single Responsibility per Role" 원칙</li>
+            </ul>
+        </section>
+
+        <section id="sec4">
+            <h3>3. 토큰 비용 폭발 (Token Cost Explosion)</h3>
+            <p>작은 수정을 위해 큰 파일을 통째로 Read하는 패턴이 만연한다.</p>
+            <ul>
+                <li>20줄 edit을 위해 1,500줄 파일 전체 로드 → ~15,000 토큰 낭비</li>
+                <li>bash `find` / `grep -r` 결과를 컨텍스트에 흡수 → 수천 토큰 낭비</li>
+                <li>"확인용" 반복 Read → 매 턴 수천 토큰 누적</li>
+            </ul>
+            <h4>대응 전략</h4>
+            <ul>
+                <li>Cave-Man Protocol</li>
+                <li>Dictionary.md 좌표 시스템의 BLK 좌표 인덱싱</li>
+                <li>RULE7 PRD Spatial Mapping: EXECUTE 단계에서 좌표 없는 행동 차단</li>
+            </ul>
+        </section>
+
+        <section id="sec5">
+            <h3>4. 세션 단절 (Session Discontinuity)</h3>
+            <p>새 세션을 열거나 다른 AI(Trae, Gemini)에게 작업을 넘길 때 컨텍스트가 0에서 시작한다. 사용자는 모든 배경을 다시 설명해야 하며, AI마다 동작 규칙이 달라 동일 결과를 보장할 수 없다.</p>
+            <h4>대응 전략</h4>
+            <ul>
+                <li>4계층 메모리 아키텍처의 L1·L4 계층</li>
+                <li>External AI 역할분리</li>
+                <li>doc-context 입력 워크플로우</li>
+            </ul>
+        </section>
+
+        <section id="sec6">
+            <h3>5. 에이전트 디스패치 혼란 (Agent Dispatch Confusion)</h3>
+            <p>어떤 작업에 어떤 에이전트를 호출할지 자체가 복잡한 결정이 된다.</p>
+            <ul>
+                <li>단순 질문에 Opus 에이전트 호출 → 비용 낭비</li>
+                <li>멀티시스템 작업을 단일 에이전트가 처리 → 품질 저하</li>
+                <li>검증 단계 누락 → 결함 누적</li>
+            </ul>
+            <h4>대응 전략</h4>
+            <ul>
+                <li>3Tier 에이전트 스튜디오의 Tier 분리</li>
+                <li>Producer-QualitySentinel-Reporter 게이트 체인</li>
+                <li>작업 규모별 워크플로: 규모별 라우팅 정의</li>
+            </ul>
+        </section>
+
+        <section id="sec7">
+            <h3>6. 통찰</h3>
+            <p>이 다섯 문제는 모두 "LLM이 모든 것을 기억하고, 자유롭게 탐색하고, 스스로 판단하면 잘 될 것이다"라는 가정의 실패를 보여준다. 5대 문제의 공통 해법은 <span class="highlight-text">AI의 자율성을 제한하고, 상태와 인덱스를 외부에 두는 것</span>이다.</p>
+        </section>
+    </main>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (current === '') {
+                    // At top, highlight first link
+                    if (link === navLinks[0]) {
+                        link.classList.add('active');
+                    }
+                } else {
+                    // Match exact section ID
+                    const href = link.getAttribute('href');
+                    if (href && href === '#' + current) {
+                        link.classList.add('active');
+                    }
+                }
+            });
+        }
+        
+        // Initial call
+        updateActiveNav();
+        window.addEventListener('scroll', updateActiveNav);
+    </script>
+</body>
+</html>
