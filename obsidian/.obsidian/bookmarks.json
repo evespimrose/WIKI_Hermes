@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "type": "file",
+      "ctime": 1779435882374,
+      "path": "RX_1/RX_1_인덱스.md",
+      "title": "RX_1"
+    },
+    {
+      "type": "graph",
+      "ctime": 1779436443659,
+      "title": "그래프",
+      "options": {
+        "collapse-filter": true,
+        "search": "",
+        "showTags": false,
+        "showAttachments": false,
+        "hideUnresolved": false,
+        "showOrphans": true,
+        "collapse-color-groups": true,
+        "colorGroups": [],
+        "collapse-display": true,
+        "showArrow": false,
+        "textFadeMultiplier": 0,
+        "nodeSizeMultiplier": 1,
+        "lineSizeMultiplier": 1,
+        "collapse-forces": true,
+        "centerStrength": 0.518713248970312,
+        "repelStrength": 10,
+        "linkStrength": 1,
+        "linkDistance": 250,
+        "scale": 1,
+        "close": true
+      }
+    }
+  ]
+}

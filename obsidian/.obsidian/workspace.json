@@ -1,0 +1,220 @@
+{
+  "main": {
+    "id": "ddae63fa661f9a12",
+    "type": "split",
+    "children": [
+      {
+        "id": "39d42013cf533fb1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8b34d4bab23cfa48",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "graph",
+              "state": {},
+              "pinned": true,
+              "icon": "lucide-git-fork",
+              "title": "그래프 뷰"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "434751892df108cc",
+    "type": "split",
+    "children": [
+      {
+        "id": "4a1a707f8ff7a194",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c0ba4ecc27975eb4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
+            }
+          },
+          {
+            "id": "c634a07e6b957473",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "검색"
+            }
+          },
+          {
+            "id": "9f86b729b40fc652",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "북마크"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0f2a7ad9a3575c6c",
+    "type": "split",
+    "children": [
+      {
+        "id": "63f5c5a18a1e1fe4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4ae39d16ea9e1fb2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "LLM_워크플로우_생태계.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "LLM_워크플로우_생태계 의 백링크"
+            }
+          },
+          {
+            "id": "f0c32398e72f4a02",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "4bd5403bddb74114",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "39d8cb9359067ff2",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "f7f950b25c1b8511",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:빠른 전환기 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false,
+      "bases:새 베이스 생성하기": false
+    }
+  },
+  "active": "c0ba4ecc27975eb4",
+  "lastOpenFiles": [
+    "LLM_Wiki_운영체계.md",
+    "LLM_통제_철학_6대원칙.md",
+    "하네스_엔지니어링.md.tmp.111512.8b3f1bbb2f8e",
+    "구체지시_우선_원칙.md.tmp.111512.71de83c600d0",
+    "4계층_메모리_아키텍처.md.tmp.111512.118c292ba377",
+    "작업_규모별_워크플로.md.tmp.111512.43600fc49b67",
+    "Producer_QualitySentinel_Reporter_게이트.md.tmp.111512.b96e85eae0c8",
+    "Codegraph_MCP_통합.md.tmp.111512.1ad99df04974",
+    "Sonar_Protocol.md.tmp.111512.83d800102df5",
+    "Sonar_Protocol.md.tmp.111512.de851073e32e",
+    "4계층_메모리_아키텍처.md",
+    "RX_1/RX_1_인덱스.md",
+    "LLM_워크플로우_생태계.md",
+    "3Tier_에이전트_스튜디오.md",
+    "Token_허브.md.tmp.252036.2552d000b534",
+    "Wiki_허브.md.tmp.252036.d2d785987f99",
+    "위키_기반_에이전트_맥락공유.md",
+    "에이전트_자는시간_학습루프.md",
+    "AI_네이티브_멀티에이전트_운영.md",
+    "프롬프트_컨텍스트_하네스_패러다임.md",
+    "Agent_Skill_Orchestrator_3요소.md",
+    "하네스_엔지니어링.md",
+    "Raw_Wiki_Schema_3레이어.md",
+    "위키_저장_5대필터.md",
+    "맥락_오염_방지.md",
+    "카파시_LLM_위키_패턴.md",
+    "RX_1_허브.md",
+    "Wiki_허브.md",
+    "Token_허브.md",
+    "Workflow_Ecosystem_버전계보.md",
+    "Workflow_진화_3단계.md",
+    "L1_L5_다층방어선_역사.md",
+    "LLM_컨텍스트_5대_문제.md",
+    "Git_기반_다중PC_동기화.md",
+    "raw/cxt143_simplify_ddap_picking.md"
+  ]
+}
