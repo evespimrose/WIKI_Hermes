@@ -20,6 +20,13 @@
         "a": 1,
         "rgb": 6938706
       }
+    },
+    {
+      "query": "tag:#scouted  ",
+      "color": {
+        "a": 1,
+        "rgb": 54783
+      }
     }
   ],
   "collapse-display": true,
@@ -32,6 +39,6 @@
   "repelStrength": 20,
   "linkStrength": 0.427083333333333,
   "linkDistance": 500,
-  "scale": 0.22920135941749176,
+  "scale": 0.16348370567220402,
   "close": true
 }
